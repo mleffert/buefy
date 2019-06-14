@@ -221,6 +221,7 @@
         inheritAttrs: false,
         props: {
             value: Date,
+            yearsForward:{ type:Number, default:() => {return 3}},
             dayNames: {
                 type: Array,
                 default: () => {
@@ -366,7 +367,7 @@
             * dates are set by props, range of years will fall within those dates.
             */
             listOfYears() {
-                let latestYear = this.focusedDateData.year + 3
+                let latestYear = this.focusedDateData.year + this.yearsForward
                 if (this.maxDate && this.maxDate.getFullYear() < latestYear) {
                     latestYear = this.maxDate.getFullYear()
                 }
